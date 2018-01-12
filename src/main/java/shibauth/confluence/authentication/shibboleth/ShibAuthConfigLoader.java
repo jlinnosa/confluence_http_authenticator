@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2008-2014, Confluence HTTP Authenticator Team
+ Copyright (c) 2008-2016, Confluence HTTP Authenticator Team
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -71,11 +71,11 @@ public class ShibAuthConfigLoader {
             configProps.load(propsIn);
 
             // Load local.login.supported property.
-            config.setCreateUsers(
+            config.setLocalLoginSupported(
                     Boolean.valueOf(configProps.getProperty(ShibAuthConstants.LOCAL_LOGIN_SUPPORTED, "true")).booleanValue());
 
             if (log.isDebugEnabled()) {
-                log.debug("Setting create new users to " + config.isCreateUsers());
+                log.debug("Setting local login supported to " + config.isLocalLoginSupported());
             }
 
             // Load create.users property.
@@ -138,16 +138,16 @@ public class ShibAuthConfigLoader {
                 log.debug("Setting convert header values to UTF-8 to " + config.isConvertToUTF8());
             }
 
- 	        // Load purge.roles.limit property
+            // Load purge.roles.limit property
             String purgeRolesLimit = configProps.getProperty(
-                ShibAuthConstants.PURGE_ROLES_LIMIT);
+                    ShibAuthConstants.PURGE_ROLES_LIMIT);
             if (purgeRolesLimit != null) {
                 config.setPurgeRolesLimit(Integer.valueOf(
-                    purgeRolesLimit).intValue());
+                        purgeRolesLimit).intValue());
 
                 if (log.isDebugEnabled()) {
                     log.debug("Setting purge roles limit value to " +
-                        config.getPurgeRolesLimit());
+                            config.getPurgeRolesLimit());
                 }
             }
 

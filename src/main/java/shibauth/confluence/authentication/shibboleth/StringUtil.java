@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2008-2014, Confluence HTTP Authenticator Team
+ Copyright (c) 2008-2016, Confluence HTTP Authenticator Team
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -67,7 +67,7 @@ public class StringUtil {
      *
      * @param s input string delimited by comma or semicolon
      * @return list of strings where deliminators are stripped off. if no content
-     *         is found between 2 delimitors then empty string is returned in its place
+     * is found between 2 delimitors then empty string is returned in its place
      */
     public static List toListOfStringsDelimitedByCommaOrSemicolon(String s) {
         if (s == null) {
@@ -75,7 +75,8 @@ public class StringUtil {
         }
 
         List results = new ArrayList();
-        String[] terms = s.split(SEPARATOR);
+        // include empty last one, cft. http://docs.oracle.com/javase/6/docs/api/java/lang/String.html#split%28java.lang.String,%20int%29
+        String[] terms = s.split(SEPARATOR,-1);
 
         for (int i = 0; i < terms.length; i++) {
             //this has empty string if nothing is found

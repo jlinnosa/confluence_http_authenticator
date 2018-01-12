@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<!--
-	Confluence HTTP Authenticator
-	formerly known as:
-	Confluence Shibboleth Authenticator,
-	Shibboleth Authenticator for Confluence,
-	and Georgetown University's remoteUserAuth
-	-->
+    <!--
+    Confluence HTTP Authenticator
+    formerly known as:
+    Confluence Shibboleth Authenticator,
+    Shibboleth Authenticator for Confluence,
+    and Georgetown University's remoteUserAuth
+    -->
     <modelVersion>4.0.0</modelVersion>
     <groupId>shibauth</groupId>
     <artifactId>remoteUserAuth</artifactId>
-    <version>2.5.1-SNAPSHOT</version>
+    <version>2.7.2-SNAPSHOT</version>
     <properties>
-        <confluence.version>5.4.4</confluence.version>
+        <confluence.version>6.0.2</confluence.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <issueManagement>
         <url>https://github.com/chauth/confluence_http_authenticator/issues</url>
@@ -23,7 +24,7 @@
             <name>BSD-Style License</name>
             <distribution>manual</distribution>
             <comments>
-                Copyright (c) 2008-2014, Confluence HTTP Authenticator Team
+                Copyright (c) 2008-2016, Confluence HTTP Authenticator Team
                 All rights reserved.
 
                 Redistribution and use in source and binary forms, with or without
@@ -53,7 +54,7 @@
         </license>
     </licenses>
     <developers>
-		<!-- Note: specific contributions listed in CHANGELOG/git log -p -->
+        <!-- Note: specific contributions listed in CHANGELOG/git log -p -->
         <developer>
             <name>Chad LaJoie</name>
             <roles>
@@ -132,152 +133,51 @@
                 <role>Developer</role>
             </roles>
         </developer>
+        <developer>
+            <name>Adam Bishop</name>
+            <roles>
+                <role>Developer</role>
+            </roles>
+        </developer>
+        <developer>
+            <name>Georg Kallidis</name>
+            <roles>
+                <role>Developer</role>
+            </roles>
+        </developer>
     </developers>
     <organization>
         <name>Confluence HTTP Authenticator Team</name>
         <url>https://marketplace.atlassian.com/vendors/6628</url>
     </organization>
     <name>Confluence HTTP Authenticator</name>
-    <description>Confluence HTTP Authenticator (formerly the Confluence Shibboleth Authenticator) is a seraph authenticator for Confluence that has been tested with the Shibboleth SSO.</description>
+    <description>Confluence HTTP Authenticator (formerly the Confluence Shibboleth Authenticator) is a seraph
+        authenticator for Confluence that has been tested with the Shibboleth SSO.
+    </description>
     <packaging>jar</packaging>
     <repositories>
         <repository>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <releases>
+              <id>atlassian-public</id>
+              <url>https://maven.atlassian.com/repository/public</url>
+              <snapshots>
                 <enabled>true</enabled>
-            </releases>
-            <id>Atlassian Public</id>
-            <url>https://maven.atlassian.com/content/repositories/atlassian-public/</url>
-        </repository>
-        <repository>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-            <id>Atlassian Public Snaphots</id>
-            <url>https://maven.atlassian.com/content/repositories/atlassian-public-snapshot/</url>
-        </repository>
-        <repository>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <id>Atlassian 3rd-party Repository</id>
-            <url>https://maven.atlassian.com/content/repositories/atlassian-3rdparty/</url>
-        </repository>
-        <repository>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-            <id>central-m2-repository</id>
-            <name>Central Maven 2 Repository</name>
-            <url>http://repo1.maven.org/maven2</url>
-        </repository>
-        <repository>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-            <id>Codehaus Snapshots</id>
-            <url>http://snapshots.repository.codehaus.org</url>
-        </repository>
-        <repository>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <id>TWData</id>
-            <url>https://twdata-m2-repository.googlecode.com/svn/</url>
-        </repository>
-        <repository>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <id>Nuxeo</id>
-            <url>https://maven.nuxeo.org/nexus/content/repositories/public/</url>
-        </repository>
-        <repository>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <id>OpenCast Atlassian</id>
-            <url>http://repository.opencastproject.org/nexus/content/repositories/atlassian/</url>
+                <updatePolicy>never</updatePolicy>
+                <checksumPolicy>warn</checksumPolicy>
+              </snapshots>
+               <releases>
+                 <enabled>true</enabled>
+                 <checksumPolicy>warn</checksumPolicy>
+              </releases>
         </repository>
     </repositories>
     <pluginRepositories>
         <pluginRepository>
             <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <id>Atlassian Public</id>
-            <url>https://maven.atlassian.com/content/repositories/atlassian-public/</url>
-        </pluginRepository>
-        <pluginRepository>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-            <id>Atlassian Public Snaphots</id>
-            <url>https://maven.atlassian.com/content/repositories/atlassian-public-snapshot/</url>
-        </pluginRepository>
-        <pluginRepository>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <id>Atlassian 3rd-party Repository</id>
-            <url>https://maven.atlassian.com/content/repositories/atlassian-3rdparty/</url>
-        </pluginRepository>
-        <pluginRepository>
-            <snapshots>
                 <enabled>true</enabled>
             </snapshots>
             <id>central-m2-repository</id>
             <name>Central Maven 2 Repository</name>
             <url>http://repo1.maven.org/maven2</url>
-        </pluginRepository>
-        <pluginRepository>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-            <id>Codehaus Snapshots</id>
-            <url>http://snapshots.repository.codehaus.org</url>
-        </pluginRepository>
-        <pluginRepository>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <id>TWData</id>
-            <url>https://twdata-m2-repository.googlecode.com/svn/</url>
         </pluginRepository>
         <pluginRepository>
             <snapshots>
@@ -298,6 +198,12 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>6.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.6</version>
@@ -305,16 +211,16 @@
         </dependency>
     </dependencies>
     <build>
-      <plugins>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-compiler-plugin</artifactId>
-          <version>2.5.1</version>
-          <configuration>
-            <source>1.6</source>
-            <target>1.6</target>
-          </configuration>
-        </plugin>
-      </plugins>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.3</version>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
 </project>
